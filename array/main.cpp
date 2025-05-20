@@ -1,9 +1,5 @@
 #include <iostream>
 
-int* add(int a[], int b[]){
-    for()
-}
-
 int main()
 {
     int matrix_a[2][2] = {
@@ -14,7 +10,18 @@ int main()
         {5, 6},
         {7, 8}
     };
-    // int* result = add( matrix_a, matrix_b);
 
-    std::cout << length(matrix_a);
+    int result[2][2] = {{0, 0}, {0, 0}};
+
+    for(int i=0; i<2; i++){
+        std::cout << "| ";
+        for(int j=0; j<2; j++){
+
+            std::cout << matrix_a[i][j] + matrix_b[i][j] << " ";
+
+        }
+        std::cout << "|\n";
+    }
+
+
 }

@@ -4,6 +4,7 @@
 #include <iostream>
 
 typedef struct alas_kaki *sendal;
+
 struct alas_kaki
 {
     std::string nama, warna, merek, bahan;
@@ -19,6 +20,7 @@ struct alas_kaki
         ukuran = Ukuran;
     }
 };
+
 struct linkedList
 {
     sendal front = NULL;
