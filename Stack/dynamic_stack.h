@@ -8,6 +8,7 @@ typedef struct Element_Stack *address;
 
 struct Element_Stack{
 	infotype info;
+	int index;
 	address next;
 };
 
@@ -16,6 +17,7 @@ address alokasi(infotype info){
 	s = new Element_Stack;
 	s->info = info;
 	s->next = NULL;
+	s->index = 0;
 	return s;
 }
 
@@ -30,10 +32,12 @@ struct stack{
 		address nilai_baru = alokasi(nilai);
 		if(top == NULL){
 			top = nilai_baru;
+			nilai_baru->index = 1;
 		}
 		else{
 			nilai_baru->next = top;
 			top = nilai_baru;
+			nilai_baru->index = nilai_baru->next->index + 1;
 		}
 	}
 	void pop(){

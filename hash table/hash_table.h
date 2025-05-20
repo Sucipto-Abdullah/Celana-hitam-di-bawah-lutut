@@ -4,15 +4,16 @@
 #include <iostream>
 
 typedef struct alas_kaki *sendal;
-
 struct alas_kaki
 {
+    int key;
     std::string nama, warna, merek, bahan;
     int ukuran;
     sendal next = NULL;
 
-    alas_kaki(std::string Nama, std::string Warna, std::string Merek, std::string Bahan, int Ukuran)
+    alas_kaki( int Key, std::string Nama, std::string Warna, std::string Merek, std::string Bahan, int Ukuran)
     {
+        key = Key;
         nama = Nama;
         warna = Warna;
         merek = Merek;
@@ -53,6 +54,12 @@ struct linkedList
 
 struct hash_tabel
 {
+    private:
+    int hash( int input )
+    {
+        return input % 10;
+    }
+
     public:
     linkedList table[10];
 
@@ -84,6 +91,21 @@ struct hash_tabel
         data[4] = sendal->warna;
 
         return data;
+    }
+    std::string* at( int key )
+    {
+        sendal index = table[hash(key)].front;
+        while (index->key != key){
+            index = index->next;
+        }
+
+        static std::string data[6];
+        data[0] = index->key;
+        data[1] = index->nama;
+        data[2] = index->merek;
+        data[3] = index->ukuran;
+        data[4] = index->bahan;
+        data[5] = index->warna;
     }
 
 };
