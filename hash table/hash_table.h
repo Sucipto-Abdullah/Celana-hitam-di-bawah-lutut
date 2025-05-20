@@ -13,6 +13,10 @@ struct sendal
 struct hash_tabel
 {
     std::vector<int> table;
+    // std::vector<int> table;
+    // std::vector<int> table;
+    // std::vector<int> table;
+    // std::vector<int> table;
 };
 
 #endif
