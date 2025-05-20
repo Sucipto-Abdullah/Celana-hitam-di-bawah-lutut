@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
 // Struktur node untuk menyimpan data karyawan
 struct Node {
     std::string nama;
@@ -27,5 +26,4 @@ public:
     void add(const std::string& atasan, const std::string& bawahan);  // Tambah anak
     void display();       // Tampilkan pohon
 };
-
 #endif
