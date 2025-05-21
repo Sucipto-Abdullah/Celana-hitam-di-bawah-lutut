@@ -10,12 +10,12 @@ using namespace std;
 
 class Graph {
 private:
-    map<string, vector<pair<string, int> > > adjList;
+    map <string, vector <pair <string, int> > > adjList;
 
 public:
     void tambahEdge(string asal, string tujuan, int jarak);
     void printGraph();
-    bool stasiunAda(string nama);
+    bool pointAda(string nama);
     map<string, int> dijkstra(string start);
 };
 

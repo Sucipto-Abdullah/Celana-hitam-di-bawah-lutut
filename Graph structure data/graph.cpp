@@ -30,7 +30,7 @@ void Graph::printGraph() {
         cout << endl;
     }
 }
-bool Graph::stasiunAda(string nama) {
+bool Graph::pointAda(string nama) {
     return adjList.find(nama) != adjList.end();
 }
 
@@ -44,33 +44,29 @@ map<string, int> Graph::dijkstra(string start) {
         dikunjungi[it->first] = false;
     }
 
-    jarak[start] = 0;                    // Jarak dari stasiun awal ke dirinya sendiri adalah 0
-
-    // Priority queue untuk memilih stasiun dengan jarak terkecil (pair<jarak, nama_stasiun>)
+    jarak[start] = 0;            
     priority_queue<pair<int, string>, vector<pair<int, string> >, greater<pair<int, string> > > pq;
-    pq.push(make_pair(0, start));       // Masukkan stasiun awal ke priority queue
+    pq.push(make_pair(0, start));
 
     while (!pq.empty()) {
-        string sekarang = pq.top().second;  // Ambil stasiun dengan jarak terkecil
+        string sekarang = pq.top().second;
         pq.pop();
 
-        if (dikunjungi[sekarang]) continue; // Lewati jika sudah dikunjungi sebelumnya
-        dikunjungi[sekarang] = true;        // Tandai sebagai sudah dikunjungi
+        if (dikunjungi[sekarang]) continue;
+        dikunjungi[sekarang] = true;       
 
-        // Iterasi seluruh tetangga dari stasiun sekarang
         vector<pair<string, int> >& tetangga = adjList[sekarang];
         for (int i = 0; i < tetangga.size(); i++) {
-            string tujuan = tetangga[i].first;    // Ambil nama tetangga
-            int bobot = tetangga[i].second;       // Ambil jarak ke tetangga
+            string tujuan = tetangga[i].first;
+            int bobot = tetangga[i].second;   
 
-            // Jika jarak baru lebih kecil dari jarak yang tersimpan sebelumnya, perbarui
             if (jarak[sekarang] + bobot < jarak[tujuan]) {
                 jarak[tujuan] = jarak[sekarang] + bobot;
-                pq.push(make_pair(jarak[tujuan], tujuan)); // Masukkan ke antrian prioritas
+                pq.push(make_pair(jarak[tujuan], tujuan)); 
             }
         }
     }
 
-    return jarak;  // Kembalikan hasil jarak terpendek dari stasiun awal ke semua stasiun lainnya
+    return jarak;
 }
 
