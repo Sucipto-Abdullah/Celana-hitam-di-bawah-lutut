@@ -38,5 +38,7 @@ void stack::display()
         std::cout << "\tPoint" << index->point << "\n";
         std::cout << "\tWaktu" << index->waktu << "\n";
         std::cout << "\tStatus" << index->jariah << "\n";
+        index = index->next;
+        index_number ++;
     }
 }
