@@ -8,6 +8,7 @@ void graph::insertVertex( p point )
         point->next = top_point;
         top_point = point;
     }
+    vertex_filled++;
 }
 void graph::insertEdge( e edge )
 {
@@ -29,7 +30,8 @@ void graph::display_map()
         	
         for( int pixel_x = 1; pixel_x < width+1; pixel_x ++ ){
                 
-            while ( vertex_index != NULL ){
+            for (int i=0; i< vertex_filled; i++)
+            {
                 if( vertex_index->x == pixel_x && vertex_index->y == pixel_y ){
                		std::cout<< " " << vertex_index->symbol << " ";
                		break;

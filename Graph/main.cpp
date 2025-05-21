@@ -27,8 +27,7 @@ int main(){
     screen.insertEdge(jalur_d);
 
     screen.display_map();
-    screen.display_matrix();
-    
+
     std::cout << 0%2;
     return 0;
 }

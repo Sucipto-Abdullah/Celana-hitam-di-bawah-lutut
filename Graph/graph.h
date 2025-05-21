@@ -3,7 +3,6 @@
 
 #include <cmath>
 #include <climits>
-#include <cstring>
 #include <iostream>
 
 typedef struct point *p;
@@ -56,13 +55,12 @@ e edge_alocate( p point_1, p point_2 ){
 struct graph{
     
     private:
-    // const int max_array = 24;
     p top_point = NULL;
     e top_edge = NULL;
     int edge_filled = 0;
-    // int get_max_width();
-    // int get_max_heigth();
+	int vertex_filled = 0;
     e* getShortestPath(p start, p finish);
+    
     public:
     int width, height;
     bool is_linked(p start, p target);
