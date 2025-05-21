@@ -2,17 +2,28 @@
 #include <iostream>
 
 int main() {
-    Tree organisasi;
+    Tree osis;
 
-    // Tambah struktur organisasi
-    organisasi.add("CEO", "Manager Keuangan");
-    organisasi.add("Manager Keuangan", "Staff Akuntansi");
+    // Struktur utama OSIS
+    osis.add("Ketua OSIS", "Wakil Ketua");
+    osis.add("Ketua OSIS", "Sekretaris");
+    osis.add("Ketua OSIS", "Bendahara");
+    osis.add("Ketua OSIS", "SekBid Keagamaan");
+    osis.add("Ketua OSIS", "SekBid Kominfo");
+    osis.add("Ketua OSIS", "SekBid Bela Negara");
 
-    organisasi.add("CEO", "Manager Produksi");
-    organisasi.add("Manager Produksi", "Operator Mesin");
+    // Anak-anak dari SekBid
+    osis.add("SekBid Keagamaan", "Ketua SekBid Keagamaan");
+    osis.add("SekBid Keagamaan", "Anggota SekBid Keagamaan");
 
-    std::cout << "Struktur Organisasi Perusahaan:\n";
-    organisasi.display();
+    osis.add("SekBid Kominfo", "Ketua SekBid Kominfo");
+    osis.add("SekBid Kominfo", "Anggota SekBid Kominfo");
+    
+    osis.add("SekBid Bela Negara", "Ketua SekBid Bela Negara");
+    osis.add("SekBid Bela Negara", "Anggota SekBid Bela Negara");
+
+    std::cout << "Struktur Organisasi OSIS:\n";
+    osis.display();
 
     return 0;
 }

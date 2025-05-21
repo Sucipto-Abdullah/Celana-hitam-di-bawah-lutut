@@ -1,56 +1,58 @@
 #include "tree.h"
 #include <iostream>
 
-// Konstruktor: Membuat akar pohon dengan nama "CEO"
+// Konstruktor: Membuat node root dengan nama "Ketua OSIS"
 Tree::Tree() {
-    root = new Node("CEO");  
+    root = new Node("Ketua OSIS");
 }
 
-// Destruktor: Menghapus semua node saat Tree dihancurkan
+// Destruktor: Menghapus semua node dalam tree
 Tree::~Tree() {
-    hapus(root);  
+    hapus(root);
 }
 
-// Fungsi rekursif untuk menghapus node dan semua anak-anaknya
+// Fungsi rekursif untuk menghapus semua anak dan node itu sendiri
 void Tree::hapus(Node* node) {
     for (size_t i = 0; i < node->anak.size(); ++i) {
-        hapus(node->anak[i]);   // Hapus semua anak terlebih dahulu
+        hapus(node->anak[i]); // Hapus anak-anak terlebih dahulu
     }
-    delete node;   
+    delete node; // Hapus node saat ini
 }
 
-// Fungsi pencarian node berdasarkan nama, mulai dari node tertentu
+// Fungsi pencarian node berdasarkan nama (rekursif, DFS)
 Node* Tree::cari(Node* node, const std::string& nama) {
-    if (node->nama == nama) return node; 
-    // Jika tidak cocok, cari di setiap anaknya secara rekursif
+    if (node->nama == nama) return node; // Jika cocok, kembalikan node
+
     for (size_t i = 0; i < node->anak.size(); ++i) {
-        Node* hasil = cari(node->anak[i], nama);   // Rekursi ke anak
-        if (hasil) return hasil;   
+        Node* hasil = cari(node->anak[i], nama); // Cari di anak-anak
+        if (hasil) return hasil; // Jika ditemukan, kembalikan
     }
-    return 0;  
+
+    return NULL; // Tidak ditemukan
 }
 
-// Menambahkan node anak (bawahan) ke node tertentu (atasan)
+// Fungsi untuk menambahkan node bawahan ke atasan tertentu
 void Tree::add(const std::string& atasan, const std::string& bawahan) {
-    Node* nodeAtasan = cari(root, atasan);   
+    Node* nodeAtasan = cari(root, atasan); // Cari node atasan
+
     if (nodeAtasan) {
-        nodeAtasan->anak.push_back(new Node(bawahan));   // Tambah anak baru ke vektor anak
+        nodeAtasan->anak.push_back(new Node(bawahan)); // Tambah anak
     } else {
-        std::cout << "Atasan \"" << atasan << "\" tidak ditemukan.\n";  
+        std::cout << "Atasan \"" << atasan << "\" tidak ditemukan.\n";
     }
 }
 
-// Menampilkan isi pohon dari node tertentu, dengan indentasi sesuai level
+// Fungsi rekursif untuk menampilkan tree dengan indentasi per level
 void Tree::tampil(Node* node, int level) {
-    for (int i = 0; i < level; ++i) std::cout << "  ";  // Cetak spasi sesuai level
-    std::cout << "- " << node->nama << "\n";  // Tampilkan nama node
+    for (int i = 0; i < level; ++i) std::cout << "  "; // Indentasi
+    std::cout << "- " << node->nama << "\n"; // Tampilkan nama node
 
     for (size_t i = 0; i < node->anak.size(); ++i) {
-        tampil(node->anak[i], level + 1);   // Tampilkan anak-anaknya dengan level lebih dalam
+        tampil(node->anak[i], level + 1); // Tampilkan anak-anak
     }
 }
 
-// Fungsi publik untuk menampilkan seluruh pohon mulai dari akar
+// Fungsi utama untuk menampilkan struktur organisasi OSIS dari root
 void Tree::display() {
-    tampil(root, 0);                
+    tampil(root, 0);
 }
