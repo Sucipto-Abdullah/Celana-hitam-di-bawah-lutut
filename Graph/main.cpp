@@ -1,4 +1,4 @@
-#include "graph.h"
+#include "graph.cpp"
 
 int main(){
 
@@ -13,23 +13,22 @@ int main(){
 	e jalur_c = edge_alocate(rumah, masjid);
 	e jalur_d = edge_alocate( kampus, tol );
 	
-    graph screen = new Graph(20, 20);
+    graph screen = graph(20, 20);
 
-    screen->insertVertex(rumah);
-    screen->insertVertex(kampus);
-    screen->insertVertex(spbu);
-    screen->insertVertex(masjid);
-    screen->insertVertex(tol);
+    screen.insertVertex(rumah);
+    screen.insertVertex(kampus);
+    screen.insertVertex(spbu);
+    screen.insertVertex(masjid);
+    screen.insertVertex(tol);
 
-    screen->insertEdge(jalur_a);
-    screen->insertEdge(jalur_b);
-    screen->insertEdge(jalur_c);
-    screen->insertEdge(jalur_d);
+    screen.insertEdge(jalur_a);
+    screen.insertEdge(jalur_b);
+    screen.insertEdge(jalur_c);
+    screen.insertEdge(jalur_d);
 
-    screen->display_map();
-    screen->display_table();
+    screen.display_map();
+    screen.display_matrix();
     
-    // std::cout << edge_queue.top->length;
-
+    std::cout << 0%2;
     return 0;
 }
