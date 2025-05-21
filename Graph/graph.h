@@ -45,8 +45,8 @@ e edge_alocate( p point_1, p point_2 ){
     new_edge->point[0][0] = point_1;
     new_edge->point[0][1] = point_2;
 
-    new_edge->point[1][0] = point_1;
-    new_edge->point[1][1] = point_2;
+    new_edge->point[1][0] = point_2;
+    new_edge->point[1][1] = point_1;
 
     new_edge->calculate_length( point_1, point_2 );
     return new_edge;
@@ -61,10 +61,11 @@ struct graph{
     e top_edge = NULL;
     int edge_filled = 0;
     // int get_max_width();
-    // int get_max_heigth();    
+    // int get_max_heigth();
     e* getShortestPath(p start, p finish);
     public:
     int width, height;
+    bool is_linked(p start, p target);
     graph(int Width, int Height){
         width = Width;
         height = Height;

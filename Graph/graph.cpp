@@ -73,19 +73,14 @@ void graph::display_matrix()
         index = index->next;
     }
 }
-e* graph::getShortestPath(p start, p finish)
+bool graph::is_linked(p start, p target)
 {
-    static e path[16];
-    for(int i=0; i<16; i++){
-        path[i] == NULL;
+    e index = top_edge;
+    for( int i=0; i<edge_filled; i++ )
+    {
+        for( int j=0; j<2; j++ )
+        {
+
+        }
     }
-
-    
-
-
-
-}
-void graph::listAllPath(p from, p to)
-{
-
 }
